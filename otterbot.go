@@ -26,10 +26,8 @@ THE SOFTWARE.
 package main
 
 import (
-	"encoding/csv"
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 	"strings"
 )
@@ -55,10 +53,10 @@ func main() {
 		if m.Type == "message" && strings.HasPrefix(m.Text, "<@"+id+">") {
 			// if so try to parse if
 			parts := strings.Fields(m.Text)
-			if len(parts) == 3 && parts[1] == "stock" {
+			if len(parts) == 3 && parts[1] == "info" {
 				// looks good, get the quote and reply with the result
 				go func(m Message) {
-					m.Text = getQuote(parts[2])
+					m.Text = getInfo(parts[2])
 					postMessage(ws, m)
 				}(m)
 				// NOTE: the Message object is copied, this is intentional
@@ -73,7 +71,7 @@ func main() {
 
 // Get the quote via Yahoo. You should replace this method to something
 // relevant to your team!
-func getQuote(sym string) string {
+/*func getInfo(sym string) string {
 	sym = strings.ToUpper(sym)
 	url := fmt.Sprintf("http://download.finance.yahoo.com/d/quotes.csv?s=%s&f=nsl1op&e=.csv", sym)
 	resp, err := http.Get(url)
@@ -88,4 +86,9 @@ func getQuote(sym string) string {
 		return fmt.Sprintf("%s (%s) is trading at $%s", rows[0][0], rows[0][1], rows[0][2])
 	}
 	return fmt.Sprintf("unknown response format (symbol was \"%s\")", sym)
+}
+*/
+
+func getInfo(string) string {
+	return "Otters!"
 }
