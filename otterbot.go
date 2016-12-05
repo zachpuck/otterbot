@@ -89,8 +89,12 @@ func main() {
 }
 */
 
+// getting info from: http://www.otter-world.com/sea-otter/
 func getInfo(topic string) string {
-	if topic == "types" {
+	checkTopics := strings.ToLower(topic)
+
+	switch checkTopics {
+	case "types":
 		otterSpecies := []string{
 			"Sea Otter",
 			"African Clawless Otter",
@@ -99,7 +103,9 @@ func getInfo(topic string) string {
 			"Northern River Otter",
 		}
 		return strings.Join(otterSpecies, ", ")
-	} else {
-		return "current options are: \"info types\""
+	case "seaotter":
+		return "The Sea Otter has a small round face that is absolutely adorable. Just about everyone that seems them has a comment in that regard to make. They can be up to 100 pounds so they are the heaviest of all species."
+	default:
+		return "current options are: \"info types\" or \"info SeaOtter\"!"
 	}
 }
