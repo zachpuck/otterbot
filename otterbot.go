@@ -89,6 +89,17 @@ func main() {
 }
 */
 
-func getInfo(string) string {
-	return "Otters!"
+func getInfo(topic string) string {
+	if topic == "types" {
+		otterSpecies := []string{
+			"Sea Otter",
+			"African Clawless Otter",
+			"European Otter",
+			"Giant Otter",
+			"Northern River Otter",
+		}
+		return strings.Join(otterSpecies, ", ")
+	} else {
+		return "current options are: \"info types\""
+	}
 }
