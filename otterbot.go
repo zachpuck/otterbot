@@ -1,6 +1,6 @@
 /*
 
-mybot - Illustrative Slack bot in Go
+otterbot - Illustrative Slack bot in Go
 
 Copyright (c) 2015 RapidLoop
 
@@ -36,13 +36,13 @@ import (
 
 func main() {
 	if len(os.Args) != 2 {
-		fmt.Fprintf(os.Stderr, "usage: mybot slack-bot-token\n")
+		fmt.Fprintf(os.Stderr, "usage: otterbot slack-bot-token\n")
 		os.Exit(1)
 	}
 
 	// start a websocket-based Real Time API session
 	ws, id := slackConnect(os.Args[1])
-	fmt.Println("mybot ready, ^C exits")
+	fmt.Println("otterbot ready, ^C exits")
 
 	for {
 		// read each incoming message
