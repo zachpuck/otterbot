@@ -29,6 +29,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -105,7 +106,14 @@ func getInfo(topic string) string {
 		return strings.Join(otterSpecies, ", ")
 	case "seaotter":
 		return "The Sea Otter has a small round face that is absolutely adorable. Just about everyone that seems them has a comment in that regard to make. They can be up to 100 pounds so they are the heaviest of all species."
+	case "montereybay":
+		loc := location{36.8007, 121.9473}
+		return "Monterey Bay is located at " + strconv.FormatFloat(loc.n, 'f', -1, 64) + "° N, " + strconv.FormatFloat(loc.w, 'E', -1, 64) + "° W"
 	default:
-		return "current options are: \"info types\" or \"info SeaOtter\"!"
+		return "current options are: \"info types\" or \"info SeaOtter\" or \"MontereyBay\"!"
 	}
+}
+
+type location struct {
+	n, w float64
 }
