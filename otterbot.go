@@ -105,7 +105,7 @@ type coordinates struct {
 
 // as a user of otterbot i can type a city name and be returned coordinates
 // calling on google api to return the location
-//https://medium.com/@IndianGuru/consuming-json-apis-with-go-d711efc1dcf9#.23opkpqgw
+//using the following guide as a reference: https://medium.com/@IndianGuru/consuming-json-apis-with-go-d711efc1dcf9#.23opkpqgw
 
 func getCoordinates(address string) string {
 	url := fmt.Sprintf("https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=<api key>", address)
