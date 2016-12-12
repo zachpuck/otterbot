@@ -103,12 +103,20 @@ type coordinates struct {
 	n, w float64
 }
 
+var googleKey string
+
+// Getenv google api key
+func Getenv(googleapikey string) string {
+	googleKey := googleapikey
+	return googleKey
+}
+
 // as a user of otterbot i can type a city name and be returned coordinates
 // calling on google api to return the location
 //using the following guide as a reference: https://medium.com/@IndianGuru/consuming-json-apis-with-go-d711efc1dcf9#.23opkpqgw
 
 func getCoordinates(address string) string {
-	url := fmt.Sprintf("https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=<api key>", address)
+	url := fmt.Sprintf("https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s", address, googleKey)
 
 	// Build the request
 	req, err := http.NewRequest("GET", url, nil)
